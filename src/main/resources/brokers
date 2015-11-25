@@ -1,0 +1,6 @@
+broker.id = 1
+log.dirs = /Users/yuanyi/bigdata/kafka_2.9.2-0.8.2.0/logs
+zookeeper.connect = localhost:2181
+port = 9092
+message.max.bytes = 1000000
+metadata.broker.list=localhost:9092

@@ -1,0 +1,29 @@
+
+jobInfos:
+   - jobName: sample
+     jobClassName: com.xindong.spark.gamedata.jobs.SimpleJob
+     jobType: signalTable
+     jobLeftDF:
+         dfName: accountDF
+         jsonFilePath: /Users/yuanyi/Downloads/createJson/create_account
+         isCache: true
+     jobRightDF:
+          dfName: playerDF
+          jsonFilePath: /Users/yuanyi/Downloads/createJson/income
+          isCache: false
+     joinColmn: pid
+
+   - jobName: sampleTest2
+     jobClassName: com.xindong.spark.gamedata.jobs.SqlJob
+     jobType: signalTable
+     jobLeftDF:
+          dfName: accountDF
+          jsonFilePath: /Users/yuanyi/Downloads/createJson/create_account
+          isCache: true
+     jobRightDF:
+          dfName: playerDF
+          jsonFilePath: /Users/yuanyi/Downloads/createJson/consume
+          isCache: false
+     joinColmn: pid
+     selectColumns: lTable.pid,after,time,value
+     whereCond: lTable.pid = rTable.pid
