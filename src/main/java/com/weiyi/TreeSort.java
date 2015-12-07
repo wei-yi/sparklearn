@@ -4,10 +4,10 @@ public class TreeSort {
 
     public static void headAdjust(int[] num, int adjustPosition, int limited) {
         int tmp = num[adjustPosition];
-        for(int j = adjustPosition * 2; j< limited; j*=2) {
+        for(int j = adjustPosition * 2; j<=limited; j*=2) {
             if (j < limited) {
-                if(j+1 < limited && num[j] < num[++j]) {
-                  j+=1;
+                if(j+1 <= limited && num[j] < num[j+1]) {
+                  j++;
                 }
                 if (num[j] > tmp) {
                      num[adjustPosition] = num[j];
@@ -31,6 +31,7 @@ public class TreeSort {
         for(int i =1; i< array.length-1; i++ ) {
             int tmp = array[array.length-i];
             array[array.length-i] = array[1];
+            array[1] = tmp;
             headAdjust(array, 1, array.length-i-1);
         }
         System.out.print("-----------");

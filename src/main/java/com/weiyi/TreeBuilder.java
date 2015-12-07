@@ -40,6 +40,27 @@ public class TreeBuilder {
         return firstscan;
     }
 
+    public static List<Tree> recusive(Tree t) {
+        List<Tree> nodes = new LinkedList<Tree>();
+        if (t == null)
+            return null;
+        else {
+            nodes.add(t);
+            if (t.getlChile() != null) {
+                nodes.addAll(recusive(t.getlChile()));
+            }
+            if(t.getrChild() != null) {
+                nodes.addAll(recusive(t.getrChild()));
+            }
+//           nodes.add(t);
+//            Tree c = null;
+//            if((c = t.getlChile()) != null) {
+//                return recusive(c);
+//            }
+        }
+            return nodes;
+    }
+
     public static  void main(String[] args) {
         Tree t1 = new Tree("l1", null, null);
         Tree t2 = new Tree("r1", null, null);
@@ -49,6 +70,11 @@ public class TreeBuilder {
 
         List<Tree> trees = treeDeepFirstRoot(t5);
         for(Tree t: trees) {
+            System.out.println(t.toString());
+        }
+        System.out.println("---------------");
+        List<Tree> trees1 = recusive(t5);
+        for(Tree t: trees1) {
             System.out.println(t.toString());
         }
     }
